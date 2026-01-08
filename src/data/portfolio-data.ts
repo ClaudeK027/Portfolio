@@ -8,7 +8,7 @@ const basePath = isProd ? '/Portfolio' : '';
 
 export const personalInfo = {
   name: "Claude MENYE",
-  title: "Data Scientist",
+  title: "Développeur Web & Solutions IA",
   subtitle: "Recherche d'un stage 3-6 mois | Recherche d'Alternance - 1 sem École/3 sem Entreprise",
   description:
     "Actuellement en Bachelor 3 Data & Business Intelligence à Nexta Digital School, je suis passionné par l'univers de l'IA et de ses technologies et leurs applications concrètes. Mon désir est de contribuer au développement de solutions IA adaptées tout en approfondissant mon expertise dans un environnement stimulant et collaboratif.",
@@ -32,8 +32,10 @@ export const socialLinks = {
 export const aboutMe = {
   title: "Mon Parcours",
   description: [
-    "Étudiant en Bachelor 3 Data & Business Intelligence à Nexta Digital School, je suis passionné par l'intelligence artificielle et ses applications concrètes.",
-    "J'ai acquis une solide expérience à travers plusieurs stages en développement IA et analyse de données, notamment dans l'e-commerce, l'IA générative et les systèmes IoT.",
+    "Plus qu'un développeur, un explorateur de solutions web & IA.",
+    "Ma démarche ne s'arrête pas à l'écriture de lignes de code. Elle commence par une curiosité insatiable pour les problématiques de mes clients. Pour moi, chaque projet est une phase de découverte : je cherche à comprendre les rouages de votre activité pour identifier où la technologie peut réellement faire la différence.",
+    "Mon approche repose sur l'approfondissement technique. Je ne me contente pas de solutions de surface ; je plonge dans les données et les dernières innovations en Intelligence Artificielle pour concevoir des outils robustes et intelligents.",
+    "Mon objectif final ? La création de solutions concrètes et sur mesure. Que ce soit pour automatiser vos tâches répétitives via l'IA ou pour bâtir une plateforme web qui booste votre visibilité, je transforme la complexité technique en simplicité d'utilisation pour votre entreprise."
   ],
   highlights: [
     {
