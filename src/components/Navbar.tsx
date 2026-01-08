@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { personalInfo } from "@/data/portfolio-data";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,11 +27,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
           ? "bg-black/80 backdrop-blur-lg border-b border-primary/20"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -55,7 +55,7 @@ const Navbar = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button className="glow-effect" asChild>
-              <a href="/cv.pdf" download="CV_Claude_MENYE.pdf">
+              <a href={personalInfo.resumeUrl} download="CV_Claude_MENYE.pdf">
                 Télécharger CV
               </a>
             </Button>
@@ -87,7 +87,7 @@ const Navbar = () => {
             ))}
             <div className="px-3 py-2">
               <Button className="w-full glow-effect" asChild>
-                <a href="/cv.pdf" download="CV_Claude_MENYE.pdf">
+                <a href={personalInfo.resumeUrl} download="CV_Claude_MENYE.pdf">
                   Télécharger CV
                 </a>
               </Button>
