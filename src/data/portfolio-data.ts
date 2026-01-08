@@ -1,3 +1,6 @@
+const isProd = process.env.NODE_ENV === 'production';
+const basePath = isProd ? '/Portfolio' : '';
+
 /**
  * Fichier de configuration centralisé pour les données du portfolio
  * Modifiez ce fichier pour personnaliser votre portfolio
@@ -12,8 +15,8 @@ export const personalInfo = {
   location: "69007 - Lyon",
   email: "menyeclaude33@outlook.fr",
   phone: "+33 7 58 67 08 57",
-  resumeUrl: "/cv.pdf",
-  avatarUrl: "/avatar.jpg", // Ajoutez votre photo dans public/
+  resumeUrl: `${basePath}/cv.pdf`,
+  avatarUrl: `${basePath}/avatar.jpg`, // Ajoutez votre photo dans public/
 };
 
 export const socialLinks = {
@@ -80,7 +83,7 @@ export const projects = [
     title: "Unidaily - Application de Gestion de Vie Étudiante",
     description:
       "Plateforme complète pour la gestion de la vie étudiante avec tableau de bord personnalisé, emploi du temps interactif, profil étudiant, gestion des événements du campus. Disponible en version web et mobile.",
-    image: "/projects/unidaily.png",
+    image: `${basePath}/projects/unidaily.png`,
     tags: ["React", "React Native", "Django", "Figma"],
     github: "https://github.com/ClaudeK027/Unidaily-project",
     demo: "",
@@ -219,8 +222,8 @@ export const testimonials = [
 export const siteConfig = {
   name: "Portfolio",
   description: "Portfolio de développeur moderne",
-  url: "https://votre-username.github.io/Portfolio",
-  ogImage: "/og-image.jpg",
+  url: "https://ClaudeK027.github.io/Portfolio",
+  ogImage: `${basePath}/og-image.jpg`,
   keywords: [
     "portfolio",
     "développeur",
