@@ -28,8 +28,8 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
-          ? "bg-black/80 backdrop-blur-lg border-b border-primary/20"
-          : "bg-transparent"
+        ? "bg-black/80 backdrop-blur-lg border-b border-primary/20"
+        : "bg-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,8 +55,8 @@ const Navbar = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button className="glow-effect" asChild>
-              <a href={personalInfo.resumeUrl} download="CV_Claude_MENYE.pdf">
-                Télécharger CV
+              <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer">
+                Voir le CV
               </a>
             </Button>
           </div>
@@ -87,8 +87,8 @@ const Navbar = () => {
             ))}
             <div className="px-3 py-2">
               <Button className="w-full glow-effect" asChild>
-                <a href={personalInfo.resumeUrl} download="CV_Claude_MENYE.pdf">
-                  Télécharger CV
+                <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer">
+                  Voir le CV
                 </a>
               </Button>
             </div>

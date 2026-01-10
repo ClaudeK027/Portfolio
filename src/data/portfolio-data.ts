@@ -37,6 +37,11 @@ export const aboutMe = {
     "Mon approche repose sur l'approfondissement technique. Je ne me contente pas de solutions de surface ; je plonge dans les données et les dernières innovations en Intelligence Artificielle pour concevoir des outils robustes et intelligents.",
     "Mon objectif final ? La création de solutions concrètes et sur mesure. Que ce soit pour automatiser vos tâches répétitives via l'IA ou pour bâtir une plateforme web qui booste votre visibilité, je transforme la complexité technique en simplicité d'utilisation pour votre entreprise."
   ],
+  history: [
+    "Mon évolution professionnelle s'est construite à l'intersection du développement web de haut niveau et de l'intelligence artificielle appliquée.",
+    "J'ai débuté en concevant des architectures web robustes et des plateformes e-commerce évolutives, où l'accent était mis sur l'efficacité des flux de données et l'expérience utilisateur. Très vite, j'ai intégré des solutions d'IA au cœur de ces systèmes, notamment via des moteurs de recommandation personnalisés et l'automatisation de processus complexes.",
+    "Spécialisé dans le déploiement d'applications intelligentes (ML, NLP, IA Générative), je transforme des concepts théoriques en outils concrets : de la création de sites e-commerce dopés à l'IA jusqu'à l'implémentation de systèmes IoT connectés. Mon parcours est guidé par une mission simple : bâtir des infrastructures web solides capables d'héberger et de sublimer le potentiel du Machine Learning pour répondre aux défis métier réels."
+  ],
   highlights: [
     {
       title: "Intelligence Artificielle",
