@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden grid-background pb-32"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden grid-background pb-32 pt-20 md:pt-0"
       style={{ transform: 'translateZ(0)' }}
     >
       {/* Animated Background Elements */}
@@ -25,7 +25,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight">
               Bonjour, je suis{" "}
               <span className="gradient-text">{personalInfo.name}</span>
             </h1>

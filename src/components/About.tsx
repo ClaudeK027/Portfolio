@@ -39,7 +39,7 @@ const About = () => {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8" />
           {aboutMe.description.map((paragraph, index) => (
-            <p key={index} className="text-lg text-muted-foreground max-w-3xl mx-auto mb-4">
+            <p key={index} className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6 last:mb-0 text-left md:text-center">
               {paragraph}
             </p>
           ))}
@@ -55,9 +55,9 @@ const About = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-lg blur-xl opacity-30" />
               <div className="relative bg-card p-8 rounded-lg border border-primary/20">
-                <h3 className="text-2xl font-bold mb-4">{aboutMe.title}</h3>
+                <h3 className="text-2xl font-bold mb-6 text-primary">{aboutMe.title}</h3>
                 {aboutMe.description.map((paragraph, index) => (
-                  <p key={index} className="text-muted-foreground mb-4">
+                  <p key={index} className="text-muted-foreground mb-6 last:mb-0 leading-relaxed">
                     {paragraph}
                   </p>
                 ))}
