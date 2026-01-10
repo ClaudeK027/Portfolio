@@ -73,7 +73,7 @@ export const skills = [
   },
   {
     category: "Outils & Technologies",
-    items: ["Power BI", "MS Office", "Git", "GitHub/GitLab"],
+    items: ["Notion", "Automatisation (n8n/make)", "Power BI", "MS Office", "Git", "GitHub/GitLab"],
   },
   {
     category: "Data & IA",
