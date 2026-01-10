@@ -97,9 +97,9 @@ export const projects = [
     featured: true,
   },
   {
-    title: "Application de Fine-Tuning de Modèles IA",
+    title: "Plateforme de MLOps & Fine-Tuning de LLM (Full-Stack)",
     description:
-      "Plateforme web complète pour le fine-tuning de modèles de Machine Learning. Permet le chargement et la sauvegarde de modèles et datasets, création de jobs d'entraînement, et test des modèles fine-tunés.",
+      "Conception et développement d'une solution bout-en-bout pour le fine-tuning de modèles de langage, intégrant les principes de MLOps pour garantir la traçabilité et la performance des entraînements.",
     image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
     tags: ["React", "Django", "Transformers", "TensorFlow"],
     github: "https://github.com/ClaudeK027/Fine-Tuner-app",
