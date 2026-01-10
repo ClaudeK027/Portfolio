@@ -100,7 +100,7 @@ export const projects = [
     title: "Plateforme de MLOps & Fine-Tuning de LLM (Full-Stack)",
     description:
       "Conception et développement d'une solution bout-en-bout pour le fine-tuning de modèles de langage, intégrant les principes de MLOps pour garantir la traçabilité et la performance des entraînements.",
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
+    image: `${basePath}/projects/fine-tuner-dashboard.png`,
     tags: ["React", "Django", "Transformers", "TensorFlow"],
     github: "https://github.com/ClaudeK027/Fine-Tuner-app",
     demo: "",
