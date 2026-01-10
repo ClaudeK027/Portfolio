@@ -15,7 +15,7 @@ export const personalInfo = {
   location: "69007 - Lyon",
   email: "menyeclaude33@outlook.fr",
   phone: "+33 7 58 67 08 57",
-  resumeUrl: `${basePath}/cv.pdf`,
+  resumeUrl: `${basePath}/cv.pdf?v=2`,
   avatarUrl: `${basePath}/avatar.jpg`, // Ajoutez votre photo dans public/
 };
 
