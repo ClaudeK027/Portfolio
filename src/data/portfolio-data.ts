@@ -9,7 +9,7 @@ const basePath = isProd ? '/Portfolio' : '';
 export const personalInfo = {
   name: "Claude MENYE",
   title: "Développeur Web & Solutions IA",
-  subtitle: "Recherche d'un stage 3-6 mois | Recherche d'Alternance - 1 sem École/3 sem Entreprise",
+  subtitle: "Développeur indépendant disponible pour vos projets",
   description:
     "Actuellement en Bachelor 3 Data & Business Intelligence à Nexta Digital School, je suis passionné par l'univers de l'IA et de ses technologies et leurs applications concrètes. Mon désir est de contribuer au développement de solutions IA adaptées tout en approfondissant mon expertise dans un environnement stimulant et collaboratif.",
   location: "69007 - Lyon",
