@@ -77,7 +77,7 @@ export const skills = [
   },
   {
     category: "Data & IA",
-    items: ["NLP", "Computer Vision", "Data Analysis", "IoT", "API GPT (BERT)"],
+    items: ["NLP", "Computer Vision", "Data Analysis", "IoT (Arduino, capteurs)", "API GPT (BERT)"],
   },
   {
     category: "Soft Skills",
@@ -181,7 +181,7 @@ export const experience = [
     period: "Jun 2023 - Août 2023",
     description:
       "Conception et mise en œuvre d'un système de ruches connectées. Configuration et maintenance des infrastructures réseau IoT. Optimisation des flux de données pour améliorer l'efficacité des systèmes de surveillance.",
-    technologies: ["IoT", "Data Analysis", "Python", "Power BI"],
+    technologies: ["Arduino", "IoT", "Data Analysis", "Python"],
   },
   {
     company: "PITCHBOY",
