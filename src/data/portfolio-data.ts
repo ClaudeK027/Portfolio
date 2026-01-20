@@ -90,7 +90,7 @@ export const projects = [
     title: "KC-Jobs - Cockpit de Recherche d'Emploi IA",
     description:
       "Hub intelligent centralisant la recherche d'emploi. Architecture 'Triple Backend' (Next.js, Supabase, n8n) avec matching sémantique (pgvector), scraping multi-sources automatisé et parsing de CV par IA.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    image: `${basePath}/projects/kc-jobs-dashboard.png`,
     tags: ["Next.js", "Supabase", "n8n", "AI", "pgvector"],
     github: "https://github.com/ClaudeK027/KC-Jobs",
     demo: "",
