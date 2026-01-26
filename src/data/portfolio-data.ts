@@ -77,7 +77,7 @@ export const skills = [
   },
   {
     category: "Data & IA",
-    items: ["NLP", "Computer Vision", "Data Analysis", "IoT (Arduino, capteurs)", "API GPT (BERT)"],
+    items: ["RAG", "Fine-tuning", "Langchain", "base de données Vectorielles", "NLP", "Computer Vision", "Data Analysis", "IoT (Arduino, capteurs)", "API"],
   },
   {
     category: "Soft Skills",
