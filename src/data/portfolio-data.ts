@@ -65,7 +65,7 @@ export const skills = [
   },
   {
     category: "Développement Web",
-    items: ["React", "Django", "JavaScript", "HTML/CSS", "API REST"],
+    items: ["Next.js", "Node.js", "React Native", "Vite", "Django", "JavaScript", "HTML/CSS", "API REST"],
   },
   {
     category: "Programmation",
