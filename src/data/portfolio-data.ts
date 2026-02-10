@@ -14,7 +14,7 @@ export const personalInfo = {
     "Actuellement en Bachelor 3 Data & Business Intelligence à Nexta Digital School, je suis passionné par l'univers de l'IA et de ses technologies et leurs applications concrètes. Mon désir est de contribuer au développement de solutions IA adaptées tout en approfondissant mon expertise dans un environnement stimulant et collaboratif.",
   location: "69007 - Lyon",
   email: "menyeclaude33@outlook.fr",
-  phone: "+33 7 58 67 08 57",
+  phone: "+33 7 59 17 07 26",
   resumeUrl: `${basePath}/claude-menye-cv-v2.pdf`,
   avatarUrl: `${basePath}/avatar.jpg`, // Ajoutez votre photo dans public/
 };
