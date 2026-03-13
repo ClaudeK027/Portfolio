@@ -51,16 +51,16 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Contactez-<span className="gradient-text">moi</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8" />
@@ -79,7 +79,7 @@ const Contact = () => {
             className="space-y-6"
           >
             <div>
-              <h3 className="text-2xl font-bold mb-4">Restons en contact</h3>
+              <h3 className="text-xl md:text-2xl font-bold mb-4">Restons en contact</h3>
               <p className="text-muted-foreground mb-8">
                 Je suis toujours ouvert aux nouvelles opportunités et collaborations.
                 Que ce soit pour un projet, une question ou simplement pour discuter,
@@ -92,8 +92,8 @@ const Contact = () => {
                 key={index}
                 className="border-primary/20 hover:border-primary/50 transition-all duration-300 hover:glow-effect"
               >
-                <CardContent className="flex items-center gap-4 p-6">
-                  <div className="p-3 bg-secondary rounded-lg">{info.icon}</div>
+                <CardContent className="flex items-center gap-3 md:gap-4 p-4 md:p-6">
+                  <div className="p-2 md:p-3 bg-secondary rounded-lg">{info.icon}</div>
                   <div>
                     <h4 className="font-semibold mb-1">{info.title}</h4>
                     <a
@@ -116,7 +116,7 @@ const Contact = () => {
             viewport={{ once: true }}
           >
             <Card className="border-primary/20">
-              <CardContent className="p-6">
+              <CardContent className="p-4 md:p-6">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">

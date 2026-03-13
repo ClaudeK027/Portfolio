@@ -24,15 +24,15 @@ const Footer = () => {
 
   return (
     <footer className="bg-secondary/50 border-t border-primary/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-6 md:mb-8">
           {/* KC-Labs Brand */}
           <div className="flex flex-col items-start gap-4">
             <div className="flex items-center gap-3">
               <img
                 src={`${basePath}/KC-Logo.png`}
                 alt="KC-Labs Logo"
-                className="h-12 w-12 object-contain brightness-0 invert"
+                className="h-10 w-10 md:h-12 md:w-12 object-contain brightness-0 invert"
               />
               <span className="text-xl font-bold text-foreground">KC-Labs</span>
             </div>
@@ -46,7 +46,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact</h4>
+            <h4 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Contact</h4>
             <ul className="space-y-3">
               <li>
                 <a
@@ -75,7 +75,7 @@ const Footer = () => {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Navigation</h4>
+            <h4 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Navigation</h4>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.name}>
@@ -92,7 +92,7 @@ const Footer = () => {
 
           {/* Social */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Réseaux sociaux</h4>
+            <h4 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Réseaux sociaux</h4>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <a

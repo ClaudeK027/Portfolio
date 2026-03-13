@@ -102,7 +102,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
         ? "bg-black/80 backdrop-blur-lg border-b border-primary/20"
-        : "bg-transparent"
+        : "bg-black/40 backdrop-blur-sm"
         }`}
     >
       {/* Progress Bar */}

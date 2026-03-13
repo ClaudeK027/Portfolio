@@ -15,16 +15,16 @@ import { skills } from "@/data/portfolio-data";
 
 const Skills = () => {
   const iconMap: { [key: string]: JSX.Element } = {
-    "Machine Learning": <Brain className="w-8 h-8 text-primary" />,
-    "Développement Web": <Layout className="w-8 h-8 text-accent" />,
-    "Programmation": <Code2 className="w-8 h-8 text-primary" />,
-    "Outils & Technologies": <Lightbulb className="w-8 h-8 text-accent" />,
-    "Data & IA": <LineChart className="w-8 h-8 text-primary" />,
-    "Soft Skills": <Database className="w-8 h-8 text-accent" />,
+    "Machine Learning": <Brain className="w-6 h-6 md:w-8 md:h-8 text-primary" />,
+    "Développement Web": <Layout className="w-6 h-6 md:w-8 md:h-8 text-accent" />,
+    "Programmation": <Code2 className="w-6 h-6 md:w-8 md:h-8 text-primary" />,
+    "Outils & Technologies": <Lightbulb className="w-6 h-6 md:w-8 md:h-8 text-accent" />,
+    "Data & IA": <LineChart className="w-6 h-6 md:w-8 md:h-8 text-primary" />,
+    "Soft Skills": <Database className="w-6 h-6 md:w-8 md:h-8 text-accent" />,
   };
 
   const skillCategories = skills.map((skill) => ({
-    icon: iconMap[skill.category] || <Code2 className="w-8 h-8 text-primary" />,
+    icon: iconMap[skill.category] || <Code2 className="w-6 h-6 md:w-8 md:h-8 text-primary" />,
     title: skill.category,
     skills: skill.items,
   }));
@@ -45,16 +45,16 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20">
+    <section id="skills" className="py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Mes <span className="gradient-text">Compétences</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8" />
@@ -73,12 +73,12 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <motion.div key={index} variants={item}>
               <Card className="h-full border-primary/20 hover:border-primary/50 transition-all duration-300 hover:glow-effect group">
-                <CardContent className="p-6">
+                <CardContent className="p-4 md:p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="p-2 bg-secondary rounded-lg group-hover:scale-110 transition-transform">
                       {category.icon}
                     </div>
-                    <h3 className="text-xl font-semibold">{category.title}</h3>
+                    <h3 className="text-base md:text-xl font-semibold">{category.title}</h3>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill, skillIndex) => (

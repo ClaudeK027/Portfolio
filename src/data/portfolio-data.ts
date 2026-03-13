@@ -191,7 +191,7 @@ export const projects: Project[] = [
     description:
       "Conception et développement d'une solution bout-en-bout pour le fine-tuning de modèles de langage, intégrant les principes de MLOps pour garantir la traçabilité et la performance des entraînements.",
     longDescription:
-      "Cette plateforme full-stack permet de gérer l'ensemble du cycle de vie du fine-tuning de modèles de langage (LLM), depuis la préparation des données jusqu'au déploiement du modèle affiné.\n\nL'interface React offre un dashboard complet pour configurer les paramètres d'entraînement, visualiser les métriques en temps réel (loss, accuracy, learning rate), et comparer les performances entre différents runs. Le backend Django orchestre les pipelines de fine-tuning en s'appuyant sur Hugging Face Transformers et TensorFlow.\n\nLes principes MLOps sont au cœur de l'architecture : versioning des datasets et modèles, reproductibilité des expériences, monitoring automatique des dérives de performance, et déploiement simplifié des modèles validés.",
+      "Cette plateforme full-stack MLOps est une solution complète dédiée au fine-tuning de grands modèles de langage (LLM). Elle a été conçue pour offrir un environnement robuste et visuel permettant de configurer, lancer et analyser des entraînements de modèles sans avoir à manipuler la ligne de commande.\n\nL'orchestration des tâches d'entraînement très gourmandes en calcul est gérée par une architecture asynchrone performante s'appuyant sur Celery et Redis. Côté modélisation, l'intégration de la méthode d'optimisation LoRA (Low-Rank Adaptation) permet un fine-tuning efficace avec une consommation minimale de mémoire RAM/VRAM, rendant la plateforme scalable.\n\nOutre l'entraînement, l'application se démarque par des outils visuels avancés : un composant interactif d'exploration permet de visualiser de manière graphique toute l'architecture interne des modèles (couches existantes, dimensions tensoriels). Enfin, des routines de tests approfondies sont intégrées nativement pour évaluer rigoureusement la qualité des jeux de données fournis en entrée et valider méticuleusement les performances du modèle affiné en sortie.",
     image: `${basePath}/projects/fine-tuner-dashboard.png`,
     images: [
       `${basePath}/projects/fine-tuner-dashboard.png`,
@@ -209,6 +209,9 @@ export const projects: Project[] = [
       { name: "Hugging Face Transformers" },
       { name: "TensorFlow" },
       { name: "Python" },
+      { name: "PostgreSQL" },
+      { name: "Celery Worker" },
+      { name: "Redis" },
       { name: "Docker" },
       { name: "REST API" },
     ],
@@ -217,6 +220,9 @@ export const projects: Project[] = [
       "Dashboard de monitoring des entraînements en temps réel",
       "Support multi-modèles via Hugging Face Transformers",
       "Architecture modulaire permettant le scaling horizontal",
+      "Possibilité d'optimisation avancée via la méthode LoRA (Low-Rank Adaptation) pour limiter la consommation de ressources RAM",
+      "Exploration graphique détaillée du graphe de modèles permettant d'en visualiser ses couches et composants internes",
+      "Intégration de routines approfondies pour l'assurance qualité des datasets entrants et une évaluation rigoureuse fine-tuning",
     ],
     github: "https://github.com/ClaudeK027/Fine-Tuner-app",
     demo: "",

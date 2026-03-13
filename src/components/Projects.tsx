@@ -38,16 +38,16 @@ const Projects = () => {
   const MAX_VISIBLE_TAGS = 3;
 
   return (
-    <section id="projects" className="py-20 bg-secondary/50">
+    <section id="projects" className="py-16 md:py-20 bg-secondary/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Mes <span className="gradient-text">Projets</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8" />
@@ -98,9 +98,9 @@ const Projects = () => {
                         {tag}
                       </Badge>
                     ))}
-                    {project.tags.length > MAX_VISIBLE_TAGS && (
+                    {project.techStack?.length > Math.min(project.tags.length, MAX_VISIBLE_TAGS) && (
                       <Badge variant="outline" className="border-primary/30 text-muted-foreground">
-                        +{project.tags.length - MAX_VISIBLE_TAGS}
+                        +{project.techStack.length - Math.min(project.tags.length, MAX_VISIBLE_TAGS)}
                       </Badge>
                     )}
                   </div>
@@ -123,15 +123,17 @@ const Projects = () => {
                       </a>
                     </Button>
                   ) : (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1 opacity-40 pointer-events-none"
-                      disabled
-                    >
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </Button>
+                    <div className="flex-1" title="Code privé / Non disponible">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full opacity-40 pointer-events-none"
+                        disabled
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        Code
+                      </Button>
+                    </div>
                   )}
                   <Button
                     size="sm"

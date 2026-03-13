@@ -8,33 +8,33 @@ import { aboutMe } from "@/data/portfolio-data";
 const About = () => {
   const highlights = [
     {
-      icon: <Brain className="w-8 h-8 text-primary" />,
+      icon: <Brain className="w-6 h-6 md:w-8 md:h-8 text-primary" />,
       title: aboutMe.highlights[0].title,
       description: aboutMe.highlights[0].description,
     },
     {
-      icon: <Database className="w-8 h-8 text-primary" />,
+      icon: <Database className="w-6 h-6 md:w-8 md:h-8 text-primary" />,
       title: aboutMe.highlights[1].title,
       description: aboutMe.highlights[1].description,
     },
     {
-      icon: <Zap className="w-8 h-8 text-primary" />,
+      icon: <Zap className="w-6 h-6 md:w-8 md:h-8 text-primary" />,
       title: aboutMe.highlights[2].title,
       description: aboutMe.highlights[2].description,
     },
   ];
 
   return (
-    <section id="about" className="py-20 bg-secondary/50">
+    <section id="about" className="py-16 md:py-20 bg-secondary/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             À propos de <span className="gradient-text">moi</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8" />
@@ -45,7 +45,7 @@ const About = () => {
           ))}
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-10 md:mb-16">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -54,8 +54,8 @@ const About = () => {
           >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-lg blur-xl opacity-30" />
-              <div className="relative bg-card p-8 rounded-lg border border-primary/20">
-                <h3 className="text-2xl font-bold mb-6 text-primary">{aboutMe.title}</h3>
+              <div className="relative bg-card p-5 md:p-8 rounded-lg border border-primary/20">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-primary">{aboutMe.title}</h3>
                 {aboutMe.history.map((paragraph, index) => (
                   <p key={index} className="text-muted-foreground mb-6 last:mb-0 leading-relaxed text-sm md:text-base">
                     {paragraph}
@@ -77,10 +77,10 @@ const About = () => {
                 key={index}
                 className="border-primary/20 hover:border-primary/50 transition-all duration-300 hover:glow-effect"
               >
-                <CardContent className="flex items-start gap-4 p-6">
+                <CardContent className="flex items-start gap-3 md:gap-4 p-4 md:p-6">
                   <div className="flex-shrink-0">{item.icon}</div>
                   <div>
-                    <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
+                    <h4 className="text-base md:text-xl font-semibold mb-1 md:mb-2">{item.title}</h4>
                     <p className="text-muted-foreground">{item.description}</p>
                   </div>
                 </CardContent>
