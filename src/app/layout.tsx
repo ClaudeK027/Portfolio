@@ -5,9 +5,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Claude MENYE | Data Scientist - Portfolio",
-  description: "Portfolio de Claude MENYE, Data Scientist passionné par l'IA et le Machine Learning. Spécialisé en développement IA, analyse de données et NLP. Recherche d'alternance à Lyon.",
-  keywords: ["data scientist", "intelligence artificielle", "machine learning", "python", "portfolio", "Lyon", "IA", "NLP", "Deep Learning"],
+  title: "Claude MENYE",
+  description: "Portfolio de Claude MENYE, Développeur Web & Solutions IA passionné par l'IA et le Machine Learning. Spécialisé en développement IA, analyse de données et NLP. Recherche d'alternance à Lyon.",
+  keywords: ["développeur web", "solutions ia", "intelligence artificielle", "machine learning", "python", "portfolio", "Lyon", "IA", "NLP", "Deep Learning"],
   icons: {
     icon: process.env.NODE_ENV === "production" ? "/Portfolio/favicon.png" : "/favicon.png",
   },
