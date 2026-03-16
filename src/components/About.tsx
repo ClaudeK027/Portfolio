@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Brain, Database, Zap } from "lucide-react";
+import { Brain, Code2, Rocket } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { aboutMe } from "@/data/portfolio-data";
 
@@ -13,12 +13,12 @@ const About = () => {
       description: aboutMe.highlights[0].description,
     },
     {
-      icon: <Database className="w-6 h-6 md:w-8 md:h-8 text-primary" />,
+      icon: <Code2 className="w-6 h-6 md:w-8 md:h-8 text-primary" />,
       title: aboutMe.highlights[1].title,
       description: aboutMe.highlights[1].description,
     },
     {
-      icon: <Zap className="w-6 h-6 md:w-8 md:h-8 text-primary" />,
+      icon: <Rocket className="w-6 h-6 md:w-8 md:h-8 text-primary" />,
       title: aboutMe.highlights[2].title,
       description: aboutMe.highlights[2].description,
     },

@@ -11,7 +11,7 @@ export const personalInfo = {
   title: "Développeur Web & Solutions IA",
   subtitle: "Développeur indépendant disponible pour vos projets",
   description:
-    "Actuellement en Bachelor 3 Data & Business Intelligence à Nexta Digital School, je suis passionné par l'univers de l'IA et de ses technologies et leurs applications concrètes. Mon désir est de contribuer au développement de solutions IA adaptées tout en approfondissant mon expertise dans un environnement stimulant et collaboratif.",
+    "Je conçois et déploie des applications web fullstack et des systèmes IA sur mesure. Automatisation de processus, plateformes intelligentes, intégration de LLMs : je prends en charge vos projets de l'architecture à la mise en production.",
   location: "69007 - Lyon",
   email: "menyeclaude33@outlook.fr",
   phone: "+33 7 59 17 07 26",
@@ -33,27 +33,28 @@ export const aboutMe = {
   title: "Mon Parcours",
   description: [
     "Plus qu'un développeur, un explorateur de solutions web & IA.",
-    "Ma démarche ne s'arrête pas à l'écriture de lignes de code. Elle commence par une curiosité insatiable pour les problématiques de mes clients. Pour moi, chaque projet est une phase de découverte : je cherche à comprendre les rouages de votre activité pour identifier où la technologie peut réellement faire la différence.",
-    "Mon approche repose sur l'approfondissement technique. Je ne me contente pas de solutions de surface ; je plonge dans les données et les dernières innovations en Intelligence Artificielle pour concevoir des outils robustes et intelligents.",
-    "Mon objectif final ? La création de solutions concrètes et sur mesure. Que ce soit pour automatiser vos tâches répétitives via l'IA ou pour bâtir une plateforme web qui booste votre visibilité, je transforme la complexité technique en simplicité d'utilisation pour votre entreprise."
+    "Ma démarche commence toujours par une question simple : quel est le vrai problème à résoudre ? Avant d'écrire une seule ligne de code, je cherche à comprendre les rouages de votre activité pour identifier où la technologie peut réellement faire la différence.",
+    "Je travaille en indépendant sur des projets web et IA pour des clients qui veulent aller au-delà des solutions génériques. Chaque mission est construite sur mesure : architecture adaptée, stack choisie pour durer, résultat pensé pour votre usage réel.",
+    "Mon approche repose sur la profondeur technique. Je ne livre pas des démos, je déploie des systèmes en production : APIs robustes, pipelines de données, modèles d'IA intégrés dans des interfaces utilisables.",
+    "Que vous ayez besoin d'automatiser un processus métier, de construire une plateforme intelligente ou d'intégrer l'IA générative dans votre produit, je transforme la complexité technique en valeur concrète pour votre projet."
   ],
   history: [
-    "Mon évolution professionnelle s'est construite à l'intersection du développement web de haut niveau et de l'intelligence artificielle appliquée.",
-    "J'ai débuté en concevant des architectures web robustes et des plateformes e-commerce évolutives, où l'accent était mis sur l'efficacité des flux de données et l'expérience utilisateur. Très vite, j'ai intégré des solutions d'IA au cœur de ces systèmes, notamment via des moteurs de recommandation personnalisés et l'automatisation de processus complexes.",
-    "Spécialisé dans le déploiement d'applications intelligentes (ML, NLP, IA Générative), je transforme des concepts théoriques en outils concrets : de la création de sites e-commerce dopés à l'IA jusqu'à l'implémentation de systèmes IoT connectés. Mon parcours est guidé par une mission simple : bâtir des infrastructures web solides capables d'héberger et de sublimer le potentiel du Machine Learning pour répondre aux défis métier réels."
+    "Mon parcours s'est construit à l'intersection du développement web fullstack et de l'IA appliquée, sur des projets variés qui m'ont confronté à des contraintes métier réelles dès le départ.",
+    "J'ai conçu des systèmes concrets dans des contextes différents : moteurs de recommandation pour des plateformes e-commerce, architectures de transfert de style par IA générative (SDXL), pipelines d'analyse NLP et systèmes IoT de collecte de données. Des problématiques distinctes, une exigence commune : que ça tourne en conditions réelles.",
+    "Aujourd'hui, je prends en charge des missions freelance de bout en bout : de la définition de l'architecture à la mise en production, en passant par l'intégration de LLMs (RAG, fine-tuning, agents multi-modèles), la conception d'APIs backend et la livraison d'interfaces web modernes."
   ],
   highlights: [
     {
-      title: "Intelligence Artificielle",
-      description: "Expertise en Machine Learning et Deep Learning avec TensorFlow et PyTorch",
+      title: "Intelligence Artificielle & ML",
+      description: "Conception de systèmes IA en production : RAG, fine-tuning LLM, agents multi-modèles, computer vision et NLP appliqué à des cas métier réels.",
     },
     {
-      title: "Analyse de Données",
-      description: "Maîtrise de l'analyse approfondie et visualisation avec Power BI",
+      title: "Développement Web Fullstack",
+      description: "Conception d'applications web complètes : interfaces React/Next.js, APIs FastAPI/Node.js, bases de données, du design à la livraison.",
     },
     {
-      title: "Autonomie & Rigueur",
-      description: "Capacité à mener des projets complexes de manière proactive et structurée",
+      title: "Déploiement & Production",
+      description: "Mise en production sur Vercel, Railway et Docker, avec CI/CD, monitoring et architectures pensées pour passer à l'échelle.",
     },
   ],
 };
