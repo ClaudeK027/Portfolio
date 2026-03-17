@@ -9,7 +9,6 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show button after scrolling past the hero section (~100vh)
       setIsVisible(window.scrollY > window.innerHeight * 0.8);
     };
 
@@ -28,9 +27,9 @@ const ScrollToTop = () => {
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
           onClick={scrollToTop}
-          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 lg:bottom-8 lg:right-8 z-40 p-2.5 md:p-3 rounded-full bg-primary/90 text-white shadow-lg hover:bg-primary transition-colors duration-200 glow-effect group"
+          className="fixed bottom-6 right-6 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10 z-50 p-3 md:p-3.5 rounded-full bg-primary text-white shadow-[0_4px_20px_rgba(0,128,255,0.4)] hover:shadow-[0_4px_30px_rgba(0,128,255,0.6)] hover:bg-primary/90 transition-all duration-200 ring-pulse group"
           aria-label="Retour en haut"
         >
           <ArrowUp

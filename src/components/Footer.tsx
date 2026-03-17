@@ -1,6 +1,7 @@
 "use client";
 
-import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, Phone, MapPin, ChevronRight } from "lucide-react";
 import { personalInfo, socialLinks as socialLinksData } from "@/data/portfolio-data";
 
 const basePath = process.env.NODE_ENV === "production" ? "/Portfolio" : "";
@@ -9,10 +10,10 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: <Github size={20} />, href: socialLinksData.github, label: "GitHub" },
-    { icon: <Linkedin size={20} />, href: socialLinksData.linkedin, label: "LinkedIn" },
-    { icon: <Mail size={20} />, href: socialLinksData.email, label: "Email" },
-  ].filter(link => link.href);
+    { icon: <Github size={18} />, href: socialLinksData.github, label: "GitHub" },
+    { icon: <Linkedin size={18} />, href: socialLinksData.linkedin, label: "LinkedIn" },
+    { icon: <Mail size={18} />, href: socialLinksData.email, label: "Email" },
+  ].filter((link) => link.href);
 
   const footerLinks = [
     { name: "Accueil", href: "#hero" },
@@ -23,51 +24,80 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-secondary/50 border-t border-primary/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-6 md:mb-8">
-          {/* KC-Labs Brand */}
-          <div className="flex flex-col items-start gap-4">
-            <div className="flex items-center gap-3">
+    <footer className="bg-secondary/50 relative">
+      {/* Gradient separator */}
+      <div className="separator-gradient" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+        {/* Top section: brand + social */}
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-10">
+          {/* Brand */}
+          <div className="flex flex-col items-center md:items-start gap-3">
+            <motion.div
+              className="flex items-center gap-3"
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
               <img
                 src={`${basePath}/KC-Logo.png`}
                 alt="KC-Labs Logo"
-                className="h-10 w-10 md:h-12 md:w-12 object-contain brightness-0 invert"
+                className="h-10 w-10 object-contain brightness-0 invert"
               />
               <span className="text-xl font-bold text-foreground">KC-Labs</span>
-            </div>
-            <p className="text-muted-foreground text-sm">
+            </motion.div>
+            <p className="text-muted-foreground text-sm text-center md:text-left">
               {personalInfo.title}
-            </p>
-            <p className="text-muted-foreground text-xs">
-              SIREN : 999678113
             </p>
           </div>
 
-          {/* Contact Info */}
+          {/* Social icons */}
+          <div className="flex gap-3">
+            {socialLinks.map((social) => (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-lg bg-card/60 border border-primary/10 hover:border-primary/40 hover:bg-primary/10 transition-all duration-200 text-muted-foreground hover:text-primary"
+                aria-label={social.label}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                {social.icon}
+              </motion.a>
+            ))}
+          </div>
+        </div>
+
+        {/* Middle section: 3-column grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-10 text-center sm:text-left">
+          {/* Contact */}
           <div>
-            <h4 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Contact</h4>
-            <ul className="space-y-3">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4">
+              Contact
+            </h4>
+            <ul className="space-y-2.5">
               <li>
                 <a
-                  href={`tel:${personalInfo.phone}`}
-                  className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
+                  href={`tel:${personalInfo.phone.replace(/\s/g, "")}`}
+                  className="group inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
-                  <Phone size={16} />
+                  <Phone size={14} className="flex-shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
                   {personalInfo.phone}
                 </a>
               </li>
               <li>
                 <a
                   href={socialLinksData.email}
-                  className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
+                  className="group inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
-                  <Mail size={16} />
+                  <Mail size={14} className="flex-shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
                   {personalInfo.email}
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-muted-foreground text-sm">
-                <MapPin size={16} />
+              <li className="group inline-flex items-center gap-2 text-muted-foreground text-sm">
+                <MapPin size={14} className="flex-shrink-0" />
                 {personalInfo.location}
               </li>
             </ul>
@@ -75,14 +105,20 @@ const Footer = () => {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Navigation</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4">
+              Navigation
+            </h4>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="group inline-flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
+                    <ChevronRight
+                      size={14}
+                      className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200"
+                    />
                     {link.name}
                   </a>
                 </li>
@@ -90,35 +126,34 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social */}
+          {/* Info */}
           <div>
-            <h4 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Réseaux sociaux</h4>
-            <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 bg-card rounded-lg border border-primary/20 hover:border-primary/50 transition-all hover:glow-effect"
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4">
+              Informations
+            </h4>
+            <ul className="space-y-2.5 text-sm text-muted-foreground">
+              <li>SIREN : 999678113</li>
+              <li>Micro-entreprise</li>
+              <li>{personalInfo.location}</li>
+            </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-primary/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-muted-foreground text-sm">
-            © {currentYear} KC-Labs. Tous droits réservés.
+        <div className="h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent mb-6" />
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-muted-foreground text-xs">
+            &copy; {currentYear} KC-Labs. Tous droits réservés.
           </p>
           <p className="text-muted-foreground text-xs">
             Créé avec{" "}
-            <span className="text-primary">Next.js</span> et{" "}
-            <span className="text-accent">Shadcn/ui</span>
+            <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              Next.js
+            </a>{" "}
+            et{" "}
+            <a href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+              Shadcn/ui
+            </a>
           </p>
         </div>
       </div>

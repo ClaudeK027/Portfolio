@@ -11,34 +11,34 @@ html {
     /* Electric Blue Theme - Dark Mode */
     --background: 0 0% 0%; /* Black */
     --foreground: 0 0% 100%; /* White */
-    
+
     --card: 0 0% 10%; /* Dark Gray */
     --card-foreground: 0 0% 100%;
-    
+
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 100%;
-    
+
     --primary: 207 100% 50%; /* Electric Blue #0080FF */
     --primary-foreground: 0 0% 100%;
-    
+
     --secondary: 0 0% 16%; /* Dark Gray #2A2A2A */
     --secondary-foreground: 0 0% 100%;
-    
+
     --muted: 0 0% 16%;
     --muted-foreground: 0 0% 50%; /* Gray #808080 */
-    
+
     --accent: 193 100% 50%; /* Cyan Blue #00D4FF */
     --accent-foreground: 0 0% 0%;
-    
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-    
+
     --border: 0 0% 20%;
     --input: 0 0% 20%;
     --ring: 207 100% 50%;
-    
+
     --radius: 0.5rem;
-    
+
     --chart-1: 207 100% 50%;
     --chart-2: 193 100% 50%;
     --chart-3: 0 0% 50%;
@@ -56,7 +56,17 @@ html {
   }
 }
 
-/* Hide scrollbar utility */
+/* =============================================
+   SELECTION
+   ============================================= */
+::selection {
+  background: rgba(0, 128, 255, 0.25);
+  color: #fff;
+}
+
+/* =============================================
+   SCROLLBAR (hidden)
+   ============================================= */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -65,58 +75,247 @@ html {
   display: none;
 }
 
-/* Hide Scrollbar Globally */
 html, body {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 ::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
   width: 0px;
   background: transparent;
 }
 
-/* Glow Effect */
+/* =============================================
+   KEYFRAMES
+   ============================================= */
+
+/* Glow pulse : oscillation d'intensite */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 128, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 128, 255, 0.7);
+  }
+}
+
+@keyframes glow-pulse-strong {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.9);
+  }
+}
+
+/* Gradient text anime */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Grid background respiration */
+@keyframes grid-breathe {
+  0%, 100% {
+    opacity: 0.06;
+  }
+  50% {
+    opacity: 0.12;
+  }
+}
+
+/* Aurora orbes flottants */
+@keyframes float-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+@keyframes float-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-40px, 30px) scale(1.05);
+  }
+  66% {
+    transform: translate(25px, -25px) scale(1.1);
+  }
+}
+
+@keyframes float-3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1.05);
+  }
+  33% {
+    transform: translate(20px, 40px) scale(0.95);
+  }
+  66% {
+    transform: translate(-30px, -20px) scale(1.1);
+  }
+}
+
+/* Halo respiration (about card) */
+@keyframes halo-breathe {
+  0%, 100% {
+    opacity: 0.2;
+    filter: blur(40px);
+  }
+  50% {
+    opacity: 0.4;
+    filter: blur(60px);
+  }
+}
+
+/* Ring pulse (scroll to top) */
+@keyframes ring-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Decorative line expand */
+@keyframes line-expand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 5rem;
+  }
+}
+
+/* Separator gradient pulse */
+@keyframes separator-pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Scroll indicator */
+@keyframes scroll-line {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* Border gradient rotation (outline buttons) */
+@keyframes border-rotate {
+  0% {
+    --border-angle: 0deg;
+  }
+  100% {
+    --border-angle: 360deg;
+  }
+}
+
+/* =============================================
+   GLOW EFFECTS
+   ============================================= */
 .glow-effect {
   box-shadow: 0 0 20px rgba(0, 128, 255, 0.5);
   will-change: box-shadow;
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-effect:hover {
+  animation: glow-pulse 2s ease-in-out infinite;
 }
 
 .glow-effect-strong {
   box-shadow: 0 0 30px rgba(0, 212, 255, 0.7);
   will-change: box-shadow;
+  transition: box-shadow 0.3s ease;
 }
 
-/* Gradient Text */
+.glow-effect-strong:hover {
+  animation: glow-pulse-strong 2s ease-in-out infinite;
+}
+
+/* =============================================
+   GRADIENT TEXT
+   ============================================= */
 .gradient-text {
-  background: linear-gradient(135deg, #0080FF 0%, #00D4FF 100%);
+  background: linear-gradient(135deg, #0080FF 0%, #00D4FF 50%, #0080FF 100%);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: gradient-shift 4s ease infinite;
 }
 
-/* Grid Background */
+/* =============================================
+   GRID BACKGROUND
+   ============================================= */
 .grid-background {
+  position: relative;
+}
+
+.grid-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background-image:
-    linear-gradient(to right, rgba(0, 128, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 128, 255, 0.1) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 128, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 128, 255, 0.08) 1px, transparent 1px);
   background-size: 30px 30px;
+  animation: grid-breathe 6s ease-in-out infinite;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
 }
 
 @media (min-width: 640px) {
-  .grid-background {
+  .grid-background::before {
     background-size: 40px 40px;
   }
 }
 
 @media (min-width: 1024px) {
-  .grid-background {
+  .grid-background::before {
     background-size: 50px 50px;
   }
 }
 
-/* Glass Border */
+/* =============================================
+   GLASSMORPHISM
+   ============================================= */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
 .glass-border {
   border: 1px solid rgba(0, 128, 255, 0.15);
   background: linear-gradient(
@@ -124,10 +323,74 @@ html, body {
     rgba(0, 128, 255, 0.05) 0%,
     rgba(0, 212, 255, 0.02) 100%
   );
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-/* Card Shine Effect */
+/* =============================================
+   AURORA BACKGROUND
+   ============================================= */
+.aurora-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-orb-1 {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(0, 128, 255, 0.45) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(45px);
+  animation: float-1 10s ease-in-out infinite;
+  will-change: transform;
+}
+
+.aurora-orb-2 {
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.35) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  animation: float-2 13s ease-in-out infinite;
+  will-change: transform;
+}
+
+.aurora-orb-3 {
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 100, 255, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: float-3 8s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .aurora-orb-1 { width: 500px; height: 500px; }
+  .aurora-orb-2 { width: 600px; height: 600px; }
+  .aurora-orb-3 { width: 400px; height: 400px; }
+}
+
+@media (min-width: 1024px) {
+  .aurora-orb-1 { width: 600px; height: 600px; }
+  .aurora-orb-2 { width: 750px; height: 750px; }
+  .aurora-orb-3 { width: 500px; height: 500px; }
+}
+
+/* =============================================
+   CARD SHINE EFFECT
+   ============================================= */
 .card-shine {
   position: relative;
   overflow: hidden;
@@ -156,9 +419,133 @@ html, body {
   transform: translateX(100%);
 }
 
+/* =============================================
+   HALO BREATHING (about card)
+   ============================================= */
+.halo-breathe {
+  animation: halo-breathe 4s ease-in-out infinite;
+}
 
+/* =============================================
+   SCROLL INDICATOR
+   ============================================= */
+.scroll-indicator {
+  width: 24px;
+  height: 40px;
+  border: 2px solid rgba(0, 128, 255, 0.4);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-indicator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 10px;
+  background: hsl(207, 100%, 50%);
+  border-radius: 2px;
+  animation: scroll-line 1.8s ease-in-out infinite;
+}
+
+/* =============================================
+   SEPARATOR GRADIENT
+   ============================================= */
+.separator-gradient {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0, 128, 255, 0.4), transparent);
+  animation: separator-pulse 3s ease-in-out infinite;
+  border: none;
+}
+
+/* =============================================
+   RING PULSE (scroll to top)
+   ============================================= */
+.ring-pulse {
+  position: relative;
+}
+
+.ring-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 128, 255, 0.5);
+  animation: ring-pulse 1.5s ease-out infinite;
+  pointer-events: none;
+}
+
+/* =============================================
+   FLOATING LABEL (contact form)
+   ============================================= */
+.floating-label-group {
+  position: relative;
+}
+
+.floating-label-group label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: hsl(0, 0%, 50%);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  font-size: 0.875rem;
+}
+
+.floating-label-group input:focus ~ label,
+.floating-label-group input:not(:placeholder-shown) ~ label,
+.floating-label-group textarea:focus ~ label,
+.floating-label-group textarea:not(:placeholder-shown) ~ label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: hsl(207, 100%, 50%);
+  background: hsl(0, 0%, 0%);
+  padding: 0 6px;
+}
+
+.floating-label-group textarea ~ label {
+  top: 1rem;
+  transform: translateY(0);
+}
+
+.floating-label-group textarea:focus ~ label,
+.floating-label-group textarea:not(:placeholder-shown) ~ label {
+  top: 0;
+  transform: translateY(-50%);
+}
+
+/* =============================================
+   INPUT FOCUS GLOW
+   ============================================= */
+.input-glow:focus {
+  border-color: rgba(0, 128, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(0, 128, 255, 0.1), 0 0 15px rgba(0, 128, 255, 0.15);
+  outline: none;
+}
+
+/* =============================================
+   REDUCED MOTION
+   ============================================= */
 @media (prefers-reduced-motion: reduce) {
   .card-shine::before {
     transition: none;
+  }
+  .gradient-text,
+  .aurora-orb-1,
+  .aurora-orb-2,
+  .aurora-orb-3,
+  .grid-background::before,
+  .glow-effect:hover,
+  .glow-effect-strong:hover,
+  .halo-breathe,
+  .ring-pulse::before,
+  .scroll-indicator::before,
+  .separator-gradient {
+    animation: none;
   }
 }
