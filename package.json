@@ -13,14 +13,20 @@
     "docker:run": "docker run -p 3000:3000 portfolio-template"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@radix-ui/react-slot": "^1.2.3",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.19",
+    "gsap": "^3.14.2",
+    "lenis": "^1.3.18",
     "lucide-react": "^0.424.0",
-    "next": "14.2.5",
+    "next": "^14.2.35",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-parallax-tilt": "^1.7.320",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"
   },

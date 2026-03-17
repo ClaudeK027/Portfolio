@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/data/portfolio-data";
 
@@ -20,10 +20,8 @@ const Navbar = () => {
     { name: "Contact", href: "#contact", id: "contact" },
   ];
 
-  // Scroll progress bar
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 50);
-
     const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
     setScrollProgress(progress);
@@ -34,7 +32,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  // Active section detection via IntersectionObserver
   useEffect(() => {
     const sectionIds = ["hero", "about", "skills", "projects", "contact"];
     const observers: IntersectionObserver[] = [];
@@ -51,10 +48,7 @@ const Navbar = () => {
             }
           });
         },
-        {
-          rootMargin: "-40% 0px -55% 0px",
-          threshold: 0,
-        }
+        { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
       );
 
       observer.observe(element);
@@ -66,87 +60,99 @@ const Navbar = () => {
     };
   }, []);
 
-  // Mobile menu animation variants
-  const menuVariants = {
+  /* Mobile menu : fullscreen overlay */
+  const overlayVariants = {
     hidden: {
       opacity: 0,
-      height: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut",
-        when: "afterChildren",
-      },
+      transition: { duration: 0.3, ease: "easeInOut", when: "afterChildren" },
     },
     visible: {
       opacity: 1,
-      height: "auto",
       transition: {
         duration: 0.3,
         ease: "easeInOut",
         when: "beforeChildren",
-        staggerChildren: 0.07,
+        staggerChildren: 0.08,
       },
     },
   };
 
   const menuItemVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
-      x: 0,
-      transition: { duration: 0.3, ease: "easeOut" },
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" },
     },
   };
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
-        ? "bg-black/80 backdrop-blur-lg border-b border-primary/20"
-        : "bg-black/40 backdrop-blur-sm"
-        }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-black/70 backdrop-blur-xl border-b border-white/5"
+          : "bg-transparent"
+      }`}
     >
       {/* Progress Bar */}
       <motion.div
         className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-primary to-accent"
-        style={{ width: `${scrollProgress}%` }}
+        style={{
+          width: `${scrollProgress}%`,
+          maskImage: "linear-gradient(to right, transparent, black 5%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black 5%)",
+        }}
         transition={{ duration: 0.1 }}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#hero" className="text-2xl font-bold gradient-text">
-            Portfolio
-          </a>
+          <motion.a
+            href="#hero"
+            className="text-xl font-bold gradient-text"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            KC-Labs
+          </motion.a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          {/* Desktop Navigation : pill indicator */}
+          <div className="hidden md:flex items-center gap-1 bg-white/5 rounded-full px-1.5 py-1 border border-white/5">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className={`relative py-1 transition-colors duration-200 ${activeSection === item.id
-                    ? "text-primary"
-                    : "text-foreground hover:text-primary"
-                  }`}
+                className="relative px-4 py-1.5 text-sm transition-colors duration-200"
               >
-                {item.name}
-                {/* Active indicator underline */}
                 {activeSection === item.id && (
                   <motion.div
-                    layoutId="activeSection"
-                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-accent rounded-full"
+                    layoutId="navPill"
+                    className="absolute inset-0 bg-primary/15 border border-primary/25 rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
+                <span
+                  className={`relative z-10 ${
+                    activeSection === item.id
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {item.name}
+                </span>
               </a>
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button with download icon */}
           <div className="hidden md:block">
-            <Button className="glow-effect" asChild>
+            <Button className="glow-effect group" asChild>
               <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer">
+                <Download
+                  size={16}
+                  className="mr-2 group-hover:translate-y-0.5 transition-transform duration-200"
+                />
                 Voir le CV
               </a>
             </Button>
@@ -154,7 +160,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden text-foreground relative z-50"
+            className="md:hidden text-foreground relative z-[60]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileTap={{ scale: 0.9 }}
           >
@@ -185,34 +191,36 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu : fullscreen overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            variants={menuVariants}
+            variants={overlayVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="md:hidden bg-black/95 backdrop-blur-lg border-b border-primary/20 overflow-hidden"
+            className="md:hidden fixed inset-0 bg-black/95 backdrop-blur-xl z-50 flex flex-col items-center justify-center"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="flex flex-col items-center gap-6">
               {navItems.map((item) => (
                 <motion.a
                   key={item.name}
                   href={item.href}
                   variants={menuItemVariants}
-                  className={`block px-3 py-3 rounded-lg transition-colors ${activeSection === item.id
-                      ? "text-primary bg-primary/10"
-                      : "text-foreground hover:text-primary hover:bg-primary/5"
-                    }`}
+                  className={`text-2xl font-medium transition-colors ${
+                    activeSection === item.id
+                      ? "text-primary"
+                      : "text-foreground hover:text-primary"
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
                 </motion.a>
               ))}
-              <motion.div variants={menuItemVariants} className="px-3 py-2">
-                <Button className="w-full glow-effect" asChild>
+              <motion.div variants={menuItemVariants} className="mt-4">
+                <Button className="glow-effect" size="lg" asChild>
                   <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer">
+                    <Download size={16} className="mr-2" />
                     Voir le CV
                   </a>
                 </Button>

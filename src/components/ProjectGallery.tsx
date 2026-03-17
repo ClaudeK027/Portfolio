@@ -67,6 +67,22 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
     }
   }, [currentIndex]);
 
+  // Preload adjacent images (N-1 and N+1)
+  useEffect(() => {
+    const toPreload = [currentIndex - 1, currentIndex + 1]
+      .map((i) => {
+        if (i < 0) return images.length - 1;
+        if (i >= images.length) return 0;
+        return i;
+      })
+      .filter((i) => i !== currentIndex);
+
+    toPreload.forEach((i) => {
+      const img = new Image();
+      img.src = images[i];
+    });
+  }, [currentIndex, images]);
+
   const navigate = useCallback(
     (newDirection: number) => {
       setDirection(newDirection);
@@ -111,7 +127,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
   const hasMultipleImages = images.length > 1;
   const progress = ((currentIndex + 1) / images.length) * 100;
 
-  // ── Lightbox portal (AnimatePresence INSIDE the portal) ────────────────
+  // ── Lightbox portal ────────────────────────────────────────────────────
   const lightbox = typeof document !== "undefined"
     ? createPortal(
         <AnimatePresence>
@@ -130,7 +146,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
 
               {/* Close */}
               <motion.button
-                className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/10 border border-white/15 text-white flex items-center justify-center hover:bg-white/20 transition-colors backdrop-blur-sm"
+                className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/10 border border-white/15 text-white flex items-center justify-center hover:bg-white/20 transition-colors backdrop-blur-sm group/lbclose"
                 onClick={() => setIsLightboxOpen(false)}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -138,24 +154,26 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.92 }}
               >
-                <X className="w-4 h-4" />
+                <X className="w-4 h-4 transition-transform duration-200 group-hover/lbclose:rotate-90" />
               </motion.button>
 
               {/* Counter */}
               {hasMultipleImages && (
                 <motion.div
-                  className="absolute top-4 left-1/2 -translate-x-1/2 z-10 flex items-baseline gap-1 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10"
+                  className="absolute top-4 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-0.5 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10"
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
                 >
-                  <span className="text-white font-mono text-xs font-semibold tabular-nums">
-                    {String(currentIndex + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-white/35 font-mono text-[10px]">/</span>
-                  <span className="text-white/50 font-mono text-[10px] tabular-nums">
-                    {String(images.length).padStart(2, "0")}
-                  </span>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-white font-mono text-xs font-semibold tabular-nums">
+                      {String(currentIndex + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-white/35 font-mono text-[10px]">/</span>
+                    <span className="text-white/50 font-mono text-[10px] tabular-nums">
+                      {String(images.length).padStart(2, "0")}
+                    </span>
+                  </div>
                 </motion.div>
               )}
 
@@ -209,7 +227,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                 </>
               )}
 
-              {/* Bottom dot strip */}
+              {/* Bottom dot strip — active dot pulses */}
               {hasMultipleImages && images.length <= 12 && (
                 <motion.div
                   className="absolute bottom-6 inset-x-0 z-10 flex justify-center gap-2"
@@ -227,8 +245,14 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                         backgroundColor: i === currentIndex
                           ? "hsl(var(--primary))"
                           : "rgba(255,255,255,0.3)",
+                        opacity: i === currentIndex ? [1, 0.7, 1] : 1,
                       }}
-                      transition={{ duration: 0.28 }}
+                      transition={{
+                        duration: 0.28,
+                        opacity: i === currentIndex
+                          ? { duration: 1.6, repeat: Infinity, ease: "easeInOut" }
+                          : { duration: 0.28 },
+                      }}
                       className="h-1.5 rounded-full"
                     />
                   ))}
@@ -246,7 +270,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
     <>
       <div className="flex flex-col gap-2.5">
 
-        {/* Main image — onTap opens lightbox (works correctly with drag) */}
+        {/* Main image */}
         <div className="relative aspect-video rounded-xl overflow-hidden bg-secondary group select-none cursor-zoom-in">
 
           <AnimatePresence initial={false} custom={direction} mode="sync">
@@ -272,14 +296,24 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
           {/* Bottom vignette */}
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/50 to-transparent z-10 pointer-events-none" />
 
-          {/* Zoom-in hint (appears on hover) */}
+          {/* Radial vignette overlay */}
+          <div
+            className="absolute inset-0 z-10 pointer-events-none"
+            style={{ background: "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.25) 100%)" }}
+          />
+
+          {/* Zoom-in hint — subtle pulse */}
           <div className="absolute top-3 right-3 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-            <div className="bg-black/40 backdrop-blur-sm rounded-full p-2 border border-white/15">
+            <motion.div
+              className="bg-black/40 backdrop-blur-sm rounded-full p-2 border border-white/15"
+              animate={{ scale: [1, 1.08, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
               <ZoomIn className="w-3.5 h-3.5 text-white" />
-            </div>
+            </motion.div>
           </div>
 
-          {/* Navigation arrows */}
+          {/* Navigation arrows — spring scale entrance */}
           {hasMultipleImages && (
             <>
               <motion.button
@@ -331,8 +365,8 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
         {/* Filmstrip thumbnails */}
         {hasMultipleImages && (
           <div className="relative">
-            <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-black/20 to-transparent z-10 pointer-events-none rounded-l-md" />
-            <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-black/20 to-transparent z-10 pointer-events-none rounded-r-md" />
+            <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-card/80 to-transparent z-10 pointer-events-none rounded-l-md" />
+            <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-card/80 to-transparent z-10 pointer-events-none rounded-r-md" />
             <div
               ref={thumbnailStripRef}
               className="flex gap-1.5 overflow-x-auto pb-0.5 scrollbar-hide scroll-smooth"
@@ -346,15 +380,15 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                     onClick={() => goToIndex(index)}
                     className={`flex-shrink-0 relative rounded-md overflow-hidden outline-none transition-shadow duration-300 ${
                       isActive
-                        ? "ring-[1.5px] ring-primary ring-offset-1 ring-offset-background shadow-[0_0_8px_rgba(0,128,255,0.25)]"
+                        ? "ring-2 ring-primary ring-offset-1 ring-offset-background shadow-[0_0_12px_rgba(0,128,255,0.35)]"
                         : "hover:ring-1 hover:ring-white/22"
                     }`}
                     style={{ width: 64, height: 40 }}
                     animate={{
                       scale: isActive ? 1.04 : 1,
-                      opacity: isActive ? 1 : 0.45,
+                      opacity: isActive ? 1 : 0.55,
                     }}
-                    whileHover={{ scale: isActive ? 1.04 : 1.02, opacity: 1 }}
+                    whileHover={{ scale: isActive ? 1.04 : 1.08, opacity: 1 }}
                     transition={{ duration: 0.2 }}
                     aria-label={`Image ${index + 1}`}
                     aria-current={isActive ? "true" : undefined}
@@ -365,7 +399,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                       className="w-full h-full object-cover"
                       loading="lazy"
                       style={{
-                        filter: isActive ? "none" : "grayscale(35%) brightness(0.82)",
+                        filter: isActive ? "none" : "grayscale(30%) brightness(0.85)",
                         transition: "filter 0.28s ease",
                       }}
                     />
