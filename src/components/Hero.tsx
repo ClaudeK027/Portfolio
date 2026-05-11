@@ -201,9 +201,19 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.6 }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-muted-foreground mb-5 md:mb-6 lg:mb-8 font-mono"
+            className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-muted-foreground mb-4 md:mb-5 lg:mb-6 font-mono"
           >
             <ScrambleText text={subtitle} delay={1} />
+          </motion.p>
+
+          {/* Baseline KC-Labs */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.2 }}
+            className="text-sm sm:text-base md:text-lg lg:text-xl italic text-foreground/80 mb-5 md:mb-6 lg:mb-8 max-w-3xl mx-auto tracking-wide"
+          >
+            <span className="gradient-text font-medium">{personalInfo.baseline}</span>
           </motion.p>
 
           {/* Description */}

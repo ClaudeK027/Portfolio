@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, MapPin, Phone, Send, Check, Loader2 } from "lucide-react";
+import { CalendarClock, Mail, MapPin, Phone, Send, Check, Loader2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { personalInfo } from "@/data/portfolio-data";
+import { calendly, personalInfo } from "@/data/portfolio-data";
 
 const formFieldVariants = {
   hidden: { opacity: 0, y: 15 },
@@ -114,6 +114,63 @@ const Contact = () => {
           />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Une question ? Un projet ? N&apos;hésitez pas à me contacter !
+          </p>
+        </motion.div>
+
+        {/* Calendly CTA — le plus rapide */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="mb-8 md:mb-10"
+        >
+          <Card className={`border-primary/30 bg-gradient-to-br from-primary/10 via-card/60 to-accent/10 backdrop-blur-sm ${calendly.url ? "glow-effect" : ""}`}>
+            <CardContent className="p-6 md:p-8 flex flex-col md:flex-row items-center gap-5 md:gap-8">
+              <div className="flex-shrink-0 p-3 md:p-4 bg-primary/15 border border-primary/30 rounded-xl">
+                <CalendarClock className="w-7 h-7 md:w-9 md:h-9 text-primary" />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-1">
+                  Le plus rapide
+                </p>
+                <h3 className="text-lg md:text-xl font-bold mb-1">
+                  {calendly.label}{" "}
+                  <span className="text-sm font-normal text-muted-foreground">
+                    ({calendly.duration})
+                  </span>
+                </h3>
+                <p className="text-sm text-muted-foreground">{calendly.description}</p>
+              </div>
+              {calendly.url ? (
+                <Button
+                  size="lg"
+                  className="glow-effect-strong w-full md:w-auto"
+                  asChild
+                >
+                  <a href={calendly.url} target="_blank" rel="noopener noreferrer">
+                    <CalendarClock className="w-4 h-4 mr-2" />
+                    Réserver un créneau
+                  </a>
+                </Button>
+              ) : (
+                <Button
+                  size="lg"
+                  variant="outline"
+                  disabled
+                  className="w-full md:w-auto cursor-not-allowed"
+                  title="Réservation en ligne bientôt disponible"
+                >
+                  <CalendarClock className="w-4 h-4 mr-2" />
+                  Bientôt disponible
+                </Button>
+              )}
+            </CardContent>
+          </Card>
+          <p className="text-center text-xs text-muted-foreground mt-3">
+            {calendly.url
+              ? "Ou utilisez le formulaire ci-dessous pour un message asynchrone."
+              : "En attendant, contactez-moi via le formulaire ci-dessous."}
           </p>
         </motion.div>
 

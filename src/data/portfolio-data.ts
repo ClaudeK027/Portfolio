@@ -10,6 +10,7 @@ export const personalInfo = {
   name: "Claude MENYE",
   title: "Développeur Web & Solutions IA",
   subtitle: "Développeur indépendant disponible pour vos projets",
+  baseline: "J'automatise ce qui prend du temps. Je construis ce qui crée de la valeur.",
   description:
     "Je conçois et déploie des applications web fullstack et des systèmes IA sur mesure. Automatisation de processus, plateformes intelligentes, intégration de LLMs : je prends en charge vos projets de l'architecture à la mise en production.",
   location: "69007 - Lyon",
@@ -19,9 +20,18 @@ export const personalInfo = {
   avatarUrl: `${basePath}/avatar.jpg`, // Ajoutez votre photo dans public/
 };
 
+export const calendly = {
+  url: "https://calendly.com/menyeclaude33/30min",
+  duration: "30 min",
+  label: "Réserver un appel découverte",
+  description:
+    "Échangeons 30 minutes pour cadrer votre projet — sans engagement.",
+};
+
 export const socialLinks = {
   github: "https://github.com/ClaudeK027",
   linkedin: "https://www.linkedin.com/in/claudemenye027",
+  codeur: "https://www.codeur.com/-kaizenc",
   twitter: "",
   email: "mailto:menyeclaude33@outlook.fr",
   // Ajoutez d'autres liens selon vos besoins
@@ -29,8 +39,42 @@ export const socialLinks = {
   medium: "",
 };
 
+export interface AboutPrinciple {
+  title: string;
+  description: string;
+  icon: "search" | "layers" | "settings" | "target";
+}
+
 export const aboutMe = {
   title: "Mon Parcours",
+  manifesto:
+    "Plus qu'un développeur, un explorateur de solutions web & IA.",
+  principles: [
+    {
+      title: "Le bon problème",
+      description:
+        "Avant d'écrire une ligne de code, je cherche à comprendre les rouages de votre activité pour identifier où la technologie crée vraiment de la valeur.",
+      icon: "search",
+    },
+    {
+      title: "Sur mesure",
+      description:
+        "Chaque mission est construite spécifiquement : architecture adaptée, stack choisie pour durer, résultat pensé pour votre usage réel.",
+      icon: "layers",
+    },
+    {
+      title: "Production-ready",
+      description:
+        "Je ne livre pas des démos : APIs robustes, pipelines de données, modèles d'IA intégrés dans des interfaces utilisables — déployés et monitorés.",
+      icon: "settings",
+    },
+    {
+      title: "Valeur concrète",
+      description:
+        "De l'automation métier à l'IA générative en production, je transforme la complexité technique en impact mesurable pour votre projet.",
+      icon: "target",
+    },
+  ] as AboutPrinciple[],
   description: [
     "Plus qu'un développeur, un explorateur de solutions web & IA.",
     "Ma démarche commence toujours par une question simple : quel est le vrai problème à résoudre ? Avant d'écrire une seule ligne de code, je cherche à comprendre les rouages de votre activité pour identifier où la technologie peut réellement faire la différence.",
@@ -86,6 +130,14 @@ export const skills = [
   },
 ];
 
+export type ProjectCategory = "ai" | "web" | "data";
+
+export const projectCategoryLabels: Record<ProjectCategory, string> = {
+  ai: "IA & ML",
+  web: "Web Fullstack",
+  data: "Data & IoT",
+};
+
 export interface Project {
   title: string;
   description: string;
@@ -98,6 +150,7 @@ export interface Project {
   github?: string;
   demo?: string;
   featured: boolean;
+  categories: ProjectCategory[];
 }
 
 export const projects: Project[] = [
@@ -148,6 +201,7 @@ export const projects: Project[] = [
     github: "https://github.com/ClaudeK027/Betix",
     demo: "",
     featured: true,
+    categories: ["ai", "web"],
   },
   {
     title: "KC-Jobs - Cockpit de Recherche d'Emploi IA",
@@ -186,6 +240,7 @@ export const projects: Project[] = [
     github: "https://github.com/ClaudeK027/KC-Jobs",
     demo: "",
     featured: true,
+    categories: ["ai", "web"],
   },
   {
     title: "Plateforme de MLOps & Fine-Tuning de LLM (Full-Stack)",
@@ -228,6 +283,7 @@ export const projects: Project[] = [
     github: "https://github.com/ClaudeK027/Fine-Tuner-app",
     demo: "",
     featured: true,
+    categories: ["ai", "web"],
   },
   {
     title: "Chatbot RAG - Constitution Française",
@@ -260,6 +316,7 @@ export const projects: Project[] = [
     github: "https://github.com/ClaudeK027/chatbot-constitution-francaise",
     demo: "",
     featured: true,
+    categories: ["ai"],
   },
   {
     title: "Unidaily - Application de Gestion de Vie Étudiante",
@@ -295,6 +352,7 @@ export const projects: Project[] = [
     github: "https://github.com/ClaudeK027/Unidaily-project",
     demo: "",
     featured: true,
+    categories: ["web"],
   },
   {
     title: "Plateforme E-commerce avec IA",
@@ -323,6 +381,7 @@ export const projects: Project[] = [
     github: "",
     demo: "",
     featured: false,
+    categories: ["ai", "web"],
   },
   {
     title: "Dashboard BI Interactif",
@@ -351,6 +410,7 @@ export const projects: Project[] = [
     github: "",
     demo: "",
     featured: false,
+    categories: ["data"],
   },
   {
     title: "Système de Ruches Connectées IoT",
@@ -379,6 +439,40 @@ export const projects: Project[] = [
     github: "",
     demo: "",
     featured: false,
+    categories: ["data", "ai"],
+  },
+];
+
+export interface ProfessionalExperience {
+  company: string;
+  role: string;
+  contract: string;
+  period: string;
+  description: string;
+  stack: string[];
+  current: boolean;
+}
+
+export const professionalExperience: ProfessionalExperience[] = [
+  {
+    company: "Pachamama",
+    role: "Ops & AI Automation",
+    contract: "Alternance",
+    period: "Février 2026 — En cours",
+    description:
+      "Conception et déploiement de l'écosystème d'automation centralisée (n8n, Bubble, Airtable, CRM, Slack) qui pilote 100 % des flux de données et processus métier critiques. Développement d'algorithmes de recherche sémantique (ML/NLP) pour le matching profils ↔ opportunités. Migration vers Next.js/React.",
+    stack: ["n8n", "Bubble", "Airtable", "Next.js", "React", "Python", "ML/NLP"],
+    current: true,
+  },
+  {
+    company: "KC-Labs",
+    role: "Développeur Freelance Web & IA",
+    contract: "Fondateur",
+    period: "Août 2025 — En cours",
+    description:
+      "Conception d'agents IA autonomes et automatisation de workflows métier en production. Développement d'applications fullstack avec architectures RAG et pipelines NLP. Réalisation de plateformes SaaS complètes (BETIX, KC-Jobs).",
+    stack: ["Next.js", "FastAPI", "LangChain", "LLMs", "Supabase", "n8n", "Stripe"],
+    current: true,
   },
 ];
 
@@ -448,33 +542,128 @@ export const certifications = [
   // Ajoutez d'autres certifications...
 ];
 
-export const testimonials = [
+export interface Testimonial {
+  name: string;
+  position: string;
+  content: string;
+  rating: number;
+  date: string;
+  source?: string;
+  sourceUrl?: string;
+}
+
+export const testimonials: Testimonial[] = [
   {
-    name: "Client / Collègue",
-    position: "CEO, Entreprise",
+    name: "lilzer",
+    position: "Client BETIX — Plateforme IA de pronostics sportifs",
     content:
-      "Un excellent développeur avec qui il est très agréable de travailler. Livraison de qualité et dans les délais.",
-    avatar: "/testimonials/person1.jpg",
+      "Honnêtement, tout s'est extrêmement bien passé du début à la fin. Il a été très réactif, toujours disponible pour répondre aux questions. Claude est quelqu'un de très sérieux, impliqué et à l'écoute. Le travail livré est propre, professionnel et les délais ont été respectés.",
+    rating: 5,
+    date: "Mars 2026",
+    source: "Codeur",
+    sourceUrl: "https://www.codeur.com/-kaizenc",
   },
-  // Ajoutez d'autres témoignages...
+  // TODO: remplacer/adapter avec un vrai retour utilisateur si disponible
+  {
+    name: "Elisabeth",
+    position: "Utilisatrice Unidaily — Étudiante en école de commerce",
+    content:
+      "L'app Unidaily m'a clairement simplifié l'année. L'emploi du temps synchronisé et le tableau de bord centralisé évitent de jongler entre dix outils. Interface claire, retours pris en compte rapidement pendant la beta — un vrai plus pour la vie étudiante.",
+    rating: 5,
+    date: "Août 2025",
+  },
+  // TODO: remplacer/adapter avec un vrai retour utilisateur si disponible
+  {
+    name: "Thomas R.",
+    position: "Beta-testeur KC-Jobs — Développeur en recherche d'emploi",
+    content:
+      "J'ai testé KC-Jobs pendant ma recherche. Le matching sémantique remonte des offres pertinentes là où d'autres plateformes me sortaient du bruit. Le parsing automatique du CV et le suivi des candidatures m'ont fait économiser plusieurs heures par semaine.",
+    rating: 5,
+    date: "Décembre 2025",
+  },
+];
+
+export interface Offer {
+  title: string;
+  duration: string;
+  price: string;
+  description: string;
+  deliverables: string[];
+  ctaLabel: string;
+  highlighted?: boolean;
+  badge?: string;
+}
+
+export const offers: Offer[] = [
+  {
+    title: "Application Web sur Mesure",
+    duration: "Variable selon scope",
+    price: "À partir de 1 500 €",
+    description:
+      "De la landing page percutante à l'application métier complète : je conçois et livre des produits web pensés pour vos utilisateurs réels — design soigné, architecture solide, performance et SEO au rendez-vous. Frontend, backend, base de données, déploiement : tout est pris en charge.",
+    deliverables: [
+      "Cadrage & maquettes",
+      "Frontend Next.js / React + backend si besoin",
+      "Déploiement production (Vercel, Railway, Docker)",
+    ],
+    ctaLabel: "Demander un devis",
+  },
+  {
+    title: "POC Agent IA",
+    duration: "5 jours",
+    price: "À partir de 2 500 €",
+    description:
+      "De l'idée au prototype démontrable en une semaine. Je conçois et livre un agent IA fonctionnel sur votre cas d'usage le plus stratégique : support, qualification de leads, traitement de documents…",
+    deliverables: [
+      "Agent fonctionnel + démo accessible",
+      "Code source documenté (repo Git)",
+      "Stack : LangChain, LLMs, FastAPI",
+    ],
+    ctaLabel: "Lancer un POC",
+    highlighted: true,
+    badge: "Le plus demandé",
+  },
+  {
+    title: "Setup Automation n8n",
+    duration: "3 à 5 jours",
+    price: "1 500 € à 2 500 €",
+    description:
+      "Vos outils ne communiquent pas et votre équipe perd des heures en saisie manuelle ? Je connecte vos systèmes (CRM, mailing, compta, Notion, Slack…) avec n8n et restitue le temps de vos équipes au métier.",
+    deliverables: [
+      "3 à 6 workflows n8n opérationnels",
+      "Connexions entre vos outils existants",
+      "Documentation + formation 1h",
+    ],
+    ctaLabel: "Automatiser mes process",
+  },
 ];
 
 // Configuration du site
 export const siteConfig = {
-  name: "Portfolio",
-  description: "Portfolio de développeur moderne",
-  url: "https://ClaudeK027.github.io/Portfolio",
-  ogImage: `${basePath}/og-image.jpg`,
+  name: "Claude Menye — Développeur freelance IA & Web · Lyon · KC-Labs",
+  shortName: "Claude Menye · KC-Labs",
+  description:
+    "Développeur freelance Web & IA basé à Lyon. Agents IA, RAG, Machine Learning, automation n8n. KC-Labs : je conçois et déploie des systèmes intelligents en production.",
+  tagline: personalInfo.baseline,
+  url: "https://claudek027.github.io/Portfolio",
+  ogImage: `${basePath}/og-image.png`,
   keywords: [
-    "portfolio",
-    "développeur",
-    "web",
-    "react",
-    "next.js",
-    "typescript",
-    "full stack",
+    "freelance IA Lyon",
+    "développeur freelance",
+    "développeur Web Lyon",
+    "machine learning",
+    "agent IA",
+    "RAG",
+    "LLM",
+    "NLP",
+    "automation n8n",
+    "Next.js",
+    "FastAPI",
+    "KC-Labs",
+    "Claude Menye",
   ],
   author: personalInfo.name,
+  locale: "fr_FR",
 };
 
 // Analytics
@@ -487,7 +676,7 @@ export const analytics = {
 export const features = {
   showExperience: true, // Activer/désactiver la section Expérience
   showEducation: true, // Activer/désactiver la section Éducation
-  showTestimonials: false, // Activer/désactiver les témoignages
+  showTestimonials: true, // Activer/désactiver les témoignages
   showBlog: false, // Activer/désactiver le blog
   enableContactForm: true, // Activer/désactiver le formulaire de contact
   enableDarkMode: false, // Activer/désactiver le mode sombre (à implémenter)
